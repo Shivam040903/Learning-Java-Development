@@ -1,0 +1,28 @@
+package com.lcwd.hiber.util;
+
+
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.mysql.cj.Session;
+
+
+public class HibernateUtil {
+	
+	private static SessionFactory sessionFactory;
+	
+	static {
+		try {
+			sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+		} catch (Exception e) {
+			throw new RuntimeException("Error in creating Session Factory"+ e.getMessage());
+		}
+	}
+	
+	public static SessionFactory getSessionFactory() {
+		return sessionFactory;
+	} 
+		
+	
+}
